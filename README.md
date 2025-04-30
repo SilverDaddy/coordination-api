@@ -1,28 +1,67 @@
-com.tddrestapi
-├── domain
-│   └── user
-│       ├── User.kt
-│       └── UserRepository.kt
-│
-├── application
-│   └── user
-│       ├── UserService.kt
-│       └── UserServiceImpl.kt
-│
-├── presentation
-│   └── user
-│       ├── UserController.kt
-│       └── dto
-│           ├── UserSignupRequest.kt
-│           └── UserResponse.kt
-│
-├── infrastructure
-│   └── config
-│       └── SwaggerConfig.kt (옵션)
-│
-└── support
-├── exception
-│   ├── GlobalExceptionHandler.kt
-│   └── UserAlreadyExistsException.kt
-└── util
-└── PasswordHasher.kt
+### ✅ 1. 빌드 환경
+
+| 항목              | 버전                |
+|-----------------|-------------------|
+| **JDK**         | 21                |
+| **Spring Boot** | 3.4.4             |
+| **Kotlin**      | 1.9.25            |
+| **Gradle**      | 8.13              |
+| **Build Tool**  | Gradle Kotlin DSL |
+
+### ✅ 2. 테스트, 빌드 및 실행
+
+#### 📦 테스트
+
+```bash
+./gradlew test
+```
+
+- `build/reports/tests/test/index.html` → HTML 리포트로 테스트 결과 확인 가능
+
+#### 📦 빌드
+
+```bash
+./gradlew clean build
+```
+
+#### 📦 실행
+
+```bash
+./gradlew bootRun
+```
+
+### ✅ 3. Swagger API 문서
+
+👉 [Swagger API 문서](http://localhost:8080/swagger-ui/index.html)
+
+#### 💼 관리자 기능
+
+##### 📌 상품 관리
+
+- 상품 등록, 수정, 삭제
+- 전체 상품 리스트 조회
+
+##### 📌 브랜드 관리
+
+- 브랜드 등록, 수정, 삭제 (소프트 삭제)
+- 전체 브랜드 리스트 조회
+
+##### 📌 카테고리 관리
+
+- 카테고리 등록, 수정, 삭제 (소프트 삭제)
+- 전체 카테고리 리스트 조회
+
+#### 🧍‍사용자 기능 (코디네이션 서비스)
+
+##### 📌 카테고리 요약 조회
+
+- 각 카테고리별 최저가 브랜드 및 가격 요약
+- 전체 카테고리 최저가 상품의 총합 계산
+
+##### 📌 단일 브랜드 최저가 코디 추천
+
+- 전 카테고리를 모두 포함하면서 최저가 상품을 보유한 브랜드 조회
+
+##### 📌 카테고리별 최고/최저가 브랜드 조회
+
+- 특정 카테고리에서 최고가 및 최저가 브랜드와 상품 가격 확인

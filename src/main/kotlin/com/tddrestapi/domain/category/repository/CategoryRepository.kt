@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface CategoryRepository : JpaRepository<Category, Int> {
-    fun findByName(name: String): Category?
-    fun existsByName(name: String): Boolean
+    fun findByIdAndDeletedFalse(id: Int): Category?
+    fun findAllByDeletedFalseOrderById(): List<Category>
+    fun findByCodeAndDeletedFalse(code: String): Category?
+    fun findByLabelAndDeletedFalse(label: String): Category?
 }

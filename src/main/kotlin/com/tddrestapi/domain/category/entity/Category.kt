@@ -10,8 +10,11 @@ class Category(
     var id: Int? = null,
 
     @Column(unique = true, nullable = false)
-    var name: String,
+    var code: String,
 
-    @Column
+    @Column(nullable = false)
+    var label: String,
+
+    @Column(nullable = false)
     var deleted: Boolean = false
 ) : BaseEntity()

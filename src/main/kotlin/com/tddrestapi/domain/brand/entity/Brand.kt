@@ -8,6 +8,10 @@ class Brand(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
+
+    @Column(unique = true, nullable = false)
+    var code: String,
+
     @Column(unique = true)
     var name: String,
 

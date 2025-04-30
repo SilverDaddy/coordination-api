@@ -11,6 +11,12 @@ class Product(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
+    @Column(nullable = false)
+    var name: String,
+
+    @Column(unique = true, nullable = false)
+    var modelNumber: String,
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id")
     var brand: Brand,

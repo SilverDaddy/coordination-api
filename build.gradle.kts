@@ -21,6 +21,7 @@ repositories {
 
 val kotestVersion = "5.9.1"
 val mockkVersion = "1.13.17"
+val swaggerVersion = "2.8.6"
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -37,6 +38,13 @@ dependencies {
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
     testImplementation("io.kotest:kotest-framework-engine:$kotestVersion")
+    testImplementation("io.kotest.extensions:kotest-extensions-spring:1.3.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$swaggerVersion")
+}
+configurations {
+    all {
+        exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
+    }
 }
 
 kotlin {
@@ -53,4 +61,5 @@ allOpen {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    systemProperty("kotest.framework.classpath.scanning.autoscan.disable", "true")
 }

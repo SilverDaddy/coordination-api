@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface BrandRepository : JpaRepository<Brand, Int> {
-    fun existsByNameAndDeletedFalse(name: String): Boolean
-    fun findAllByDeletedFalse(): List<Brand>
+    fun findByCodeAndDeletedFalse(code: String): Brand?
     fun findByIdAndDeletedFalse(id: Int): Brand?
 }
